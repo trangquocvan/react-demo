@@ -43,23 +43,27 @@ class App extends Component {
       this.loading = this.loading.bind(this);
   }
 
-  loading = function(value){
-    this.setState({loading: value});
+  loading = function(data){
+    console.log(data)
+    this.setState({loading: data});
   }
   render() {
     return (
-    <div className="container-fluid {{this.state.loading}}" >
-     <MuiThemeProvider theme={theme}>
-      <MenuAppBar />
-      <div className="row margin-auto">  
-        <div className="col-md-12 col-lg-12 col-xl-12">
-          <Switch>
-              <Route exact path='/login' component={Login}/>
-          </Switch>      
+    <div className="container-fluid" >
+    <div className= {this.state.loading ? 'pointer-loading' : ''} >
+      <MuiThemeProvider theme={theme}>
+        <MenuAppBar />
+        <div className="row margin-auto">  
+          <div className="col-md-12 col-lg-12 col-xl-12">
+            {/* <Switch>
+                <Route exact path='/login' component={Login} />
+            </Switch>       */}
+            <Login callBackParentUpdate={this.loading}/>
+          </div>
+          {this.state.loading}
         </div>
-      </div>
-      <CircularIndeterminate />
-    </MuiThemeProvider>
+      </MuiThemeProvider>
+    </div>
     </div>
     );
   }

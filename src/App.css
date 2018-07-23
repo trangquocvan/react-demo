@@ -35,4 +35,9 @@
 }
 .pointer-loading{
   pointer-events: none;
+  background-color: white;
+  opacity: 0.5;
+}
+Button{
+  font-size: 50px;
 }
